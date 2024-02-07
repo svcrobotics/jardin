@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* Styles généraux pour markdown-content */
+.markdown-content {
+  font-family: monaco, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  margin-bottom: 20px;
+  /*background-color: #f9f9f9;*/
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Centrer et augmenter la taille des h1 dans markdown-content */
+.markdown-content h1 {
+  text-align: center;
+  font-size: 2em; /* 2em est juste un exemple, ajustez selon vos besoins */
+}
+
+/* Styliser d'autres éléments Markdown si nécessaire */
+.markdown-content h2 {
+  font-size: 1.75em;
+}
+
+.markdown-content p {
+  margin-bottom: 1em;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 20px;
+  margin-bottom: 1em;
+}
+
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 16px;
+  color: #666;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.h1-like {
+  font-size: 2em; /* Taille de police similaire à celle de h1 */
+  font-weight: bold; /* Rendre le texte en gras */
+  margin-top: 0.67em; /* Espacement avant similaire à h1 */
+  margin-bottom: 0.67em; /* Espacement après similaire à h1 */
+  /* Ajoutez d'autres styles ici selon vos besoins */
+}

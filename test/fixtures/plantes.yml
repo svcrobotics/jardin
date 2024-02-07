@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  image_url: MyString
+  arrosage: MyText
+  origine: MyString
+  rempotage: MyText
+  maladie: MyText
+  categorie: MyString
+  temperature: MyString
+  substrat: MyText
+  taille: MyText
+  bouturage: MyText
+
+two:
+  nom: MyString
+  image_url: MyString
+  arrosage: MyText
+  origine: MyString
+  rempotage: MyText
+  maladie: MyText
+  categorie: MyString
+  temperature: MyString
+  substrat: MyText
+  taille: MyText
+  bouturage: MyText

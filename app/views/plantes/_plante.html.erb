@@ -1,0 +1,90 @@
+<div id="<%= dom_id plante %>">
+  <p class="h1-like">
+    <%# <strong class="block font-medium mb-1">Nom:</strong> %>
+    <div class="markdown-content mb-4">
+      <h1><%= plante.nom.capitalize %></h1>
+    </div>
+  </p>
+
+  <p class="my-5">
+    <div class="markdown-content mb-4">
+      <%= image_tag(plante.image_url, width: "500", alt: "Image de la plante") %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Arrosage en été:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.arrosage_printemps_ete) %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Arrosage en hiver:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.arrosage_hiver) %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Origine:</strong>
+    <div class="markdown-content mb-4">
+      <%= plante.origine_human_readable %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Rempotage:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.rempotage) %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Maladie:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.maladie) %>
+    </div>
+  </p>
+  
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Categorie:</strong>
+    <div class="markdown-content mb-4">
+      <%= plante.categorie_human_readable %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Temperature:</strong>
+    <div class="markdown-content mb-4">
+      <%= plante.temperature %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Substrat:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.substrat) %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Taille:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.taille) %>
+    </div>
+  </p>
+
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Bouturage:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.bouturage) %>
+    </div>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this plante", plante, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this plante", edit_plante_path(plante), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
