@@ -6,12 +6,14 @@
     </div>
   </p>
 
+  <% if @plante.image_url.present? %>
   <p class="my-5">
     <div class="markdown-content mb-4">
       <%= image_tag(plante.image_url, width: "500", alt: "Image de la plante") %>
     </div>
   </p>
-
+  <% end %>
+  
   <p class="h1-like">
     <strong class="block font-medium mb-1">Arrosage en été:</strong>
     <div class="markdown-content mb-4">
@@ -33,12 +35,23 @@
     </div>
   </p>
 
+  <% if @plante.rempotage.present? %>
   <p class="h1-like">
     <strong class="block font-medium mb-1">Rempotage:</strong>
     <div class="markdown-content mb-4">
       <%= markdown_to_html(@plante.rempotage) %>
     </div>
   </p>
+  <% end %>
+
+  <% if @plante.plantation.present? %>
+  <p class="h1-like">
+    <strong class="block font-medium mb-1">Plantation:</strong>
+    <div class="markdown-content mb-4">
+      <%= markdown_to_html(@plante.plantation) %>
+    </div>
+  </p>
+  <% end %>
 
   <p class="h1-like">
     <strong class="block font-medium mb-1">Maladie:</strong>
@@ -46,7 +59,7 @@
       <%= markdown_to_html(@plante.maladie) %>
     </div>
   </p>
-  
+
   <p class="h1-like">
     <strong class="block font-medium mb-1">Categorie:</strong>
     <div class="markdown-content mb-4">
@@ -60,6 +73,7 @@
       <%= plante.temperature %>
     </div>
   </p>
+
 
   <p class="h1-like">
     <strong class="block font-medium mb-1">Substrat:</strong>
