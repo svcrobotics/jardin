@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_07_204511) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_10_171938) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,24 +49,43 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_07_204511) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "plantes", force: :cascade do |t|
-    t.string "nom"
-    t.string "image_url"
-    t.text "arrosage_hiver"
+  create_table "familles", force: :cascade do |t|
     t.string "origine"
-    t.text "rempotage"
-    t.text "maladie"
-    t.string "categorie"
-    t.string "temperature"
+    t.text "arrosage"
     t.text "substrat"
+    t.text "rempotage"
     t.text "taille"
     t.text "bouturage"
+    t.text "maladie"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "arrosage_printemps_ete"
     t.text "plantation"
+    t.string "temperature"
+    t.string "nom", null: false
+    t.integer "type_id"
+    t.index ["nom"], name: "index_familles_on_nom", unique: true
+    t.index ["type_id"], name: "index_familles_on_type_id"
+  end
+
+  create_table "plantes", force: :cascade do |t|
+    t.string "nom", null: false
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "observation"
+    t.integer "famille_id"
+    t.index ["famille_id"], name: "index_plantes_on_famille_id"
+    t.index ["nom"], name: "index_plantes_on_nom", unique: true
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "nom", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nom"], name: "index_types_on_nom", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "plantes", "familles"
 end

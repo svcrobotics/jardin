@@ -6,13 +6,11 @@
 
     <%= render @plante %>
 
-    <%= link_to "Edit this plante", edit_plante_path(@plante), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-
+    <%= link_to "Editer cette plante", edit_plante_path(@plante), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Retour aux plantes", plantes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this plante", plante_path(@plante), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Detruire cette plante", plante_path(@plante), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-600 inline-block font-medium" %>
     </div>
-
-    <%= link_to "Back to plantes", plantes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
   </div>
 </div>

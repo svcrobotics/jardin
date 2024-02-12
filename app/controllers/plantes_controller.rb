@@ -13,12 +13,19 @@ class PlantesController < ApplicationController
 
 
   # GET /plantes/new
+  # app/controllers/plantes_controller.rb
   def new
     @plante = Plante.new
+    @familles = Famille.all # Récupère toutes les familles pour les afficher dans le formulaire
+    @plante.famille_id = params[:famille_id] if params[:famille_id]
+    # Assurez-vous d'ajouter une logique pour gérer le cas où `famille_id` n'est pas fourni
+
   end
 
   # GET /plantes/1/edit
   def edit
+    @plante = Plante.find(params[:id])
+    @familles = Famille.all
   end
 
   # POST /plantes or /plantes.json
@@ -67,6 +74,6 @@ class PlantesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plante_params
-      params.require(:plante).permit(:nom, :image_url, :arrosage_hiver, :arrosage_printemps_ete, :origine, :rempotage, :plantation, :maladie, :categorie, :temperature, :substrat, :taille, :bouturage)
+      params.require(:plante).permit(:nom, :image_url, :famille_id, :observation)
     end
 end

@@ -1,0 +1,11 @@
+<% @familles.each do |famille| %>
+  <div id="<%= dom_id(famille) %>">
+    <p class="h1-like">
+      <%= famille.nom %>
+    </p>
+    
+    
+    <%= link_to 'Ajouter une Plante', new_plante_path(famille_id: famille.id), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <!-- Liens pour voir, éditer, etc. -->
+  </div>
+<% end %>

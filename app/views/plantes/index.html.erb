@@ -3,16 +3,16 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center pb-8">
-    <h1 class="mx-auto text-lg font-bold text-4xl">Plantes</h1>
-  </div>
+    <div class="h1-like">Liste des plantes</div>
 
   <table id="plantes" class="mx-auto">
     <tfoot>
       <tr>
         <td colspan="3">
           <div class="mt-8">
-            <%= link_to 'New plante', new_plante_path, class: "inline rounded-lg py-3 px-5 bg-green-600 text-white block font-medium" %>
+            <%= link_to 'Nouvelle plante', new_plante_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white font-medium" %>
+            <%= link_to "Retour aux types", types_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white font-medium" %>
+            <%= link_to "Retour aux familles", familles_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white font-medium" %>
           </div>
         </td>
       </tr>
@@ -24,13 +24,6 @@
 
           <td class="px-2 py-3">
             <%= image_tag(plante.image_url, class: 'w-40') %>
-          </td>
-
-          <td>
-            <h1 class="text-xl font-bold mb-3"><%= plante.nom %></h1>
-            <p>
-              <%= plante.categorie_human_readable %>
-            </p>
           </td>
 
           

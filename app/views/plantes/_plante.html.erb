@@ -1,6 +1,5 @@
 <div id="<%= dom_id plante %>">
   <p class="h1-like">
-    <%# <strong class="block font-medium mb-1">Nom:</strong> %>
     <div class="markdown-content mb-4">
       <h1><%= plante.nom.capitalize %></h1>
     </div>
@@ -13,86 +12,10 @@
     </div>
   </p>
   <% end %>
-  
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Arrosage en été:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.arrosage_printemps_ete) %>
-    </div>
-  </p>
 
   <p class="h1-like">
-    <strong class="block font-medium mb-1">Arrosage en hiver:</strong>
     <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.arrosage_hiver) %>
-    </div>
-  </p>
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Origine:</strong>
-    <div class="markdown-content mb-4">
-      <%= plante.origine_human_readable %>
-    </div>
-  </p>
-
-  <% if @plante.rempotage.present? %>
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Rempotage:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.rempotage) %>
-    </div>
-  </p>
-  <% end %>
-
-  <% if @plante.plantation.present? %>
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Plantation:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.plantation) %>
-    </div>
-  </p>
-  <% end %>
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Maladie:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.maladie) %>
-    </div>
-  </p>
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Categorie:</strong>
-    <div class="markdown-content mb-4">
-      <%= plante.categorie_human_readable %>
-    </div>
-  </p>
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Temperature:</strong>
-    <div class="markdown-content mb-4">
-      <%= plante.temperature %>
-    </div>
-  </p>
-
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Substrat:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.substrat) %>
-    </div>
-  </p>
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Taille:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.taille) %>
-    </div>
-  </p>
-
-  <p class="h1-like">
-    <strong class="block font-medium mb-1">Bouturage:</strong>
-    <div class="markdown-content mb-4">
-      <%= markdown_to_html(@plante.bouturage) %>
+      <%= plante.observation.capitalize %>
     </div>
   </p>
 

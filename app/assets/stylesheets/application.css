@@ -64,5 +64,94 @@
   font-weight: bold; /* Rendre le texte en gras */
   margin-top: 0.67em; /* Espacement avant similaire à h1 */
   margin-bottom: 0.67em; /* Espacement après similaire à h1 */
+  text-align: center; /* Centre le texte horizontalement */
   /* Ajoutez d'autres styles ici selon vos besoins */
+}
+
+.h2-like {
+  font-size: 24px; /* Taille de la police similaire à h2 */
+  font-weight: bold; /* Rend le texte en gras */
+  margin-top: 20px; /* Espacement au-dessus du h2-like */
+  margin-bottom: 10px; /* Espacement en dessous du h2-like */
+  color: #333; /* Couleur du texte */
+  /* Vous pouvez ajouter d'autres propriétés CSS selon le style que vous souhaitez */
+}
+
+.h3-like {
+  font-size: 20px; /* Taille de la police similaire à h3 */
+  font-weight: bold; /* Rend le texte en gras */
+  margin-top: 15px; /* Espacement au-dessus du h3-like */
+  margin-bottom: 10px; /* Espacement en dessous du h3-like */
+  color: #444; /* Couleur du texte, légèrement plus foncée que h2-like */
+  /* Ajoutez ici d'autres propriétés CSS selon le style que vous souhaitez */
+}
+
+.plantes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px; /* Ajustez selon vos besoins */
+}
+
+.plante {
+  flex: 1 1 50%; /* Chaque élément de plante prend jusqu'à 50% de la largeur du conteneur */
+  padding: 10px; /* Ajustez l'espacement selon vos besoins */
+  box-sizing: border-box;
+}
+
+.plante-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+@media print {
+  body, html {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .print-header {
+    text-align: center;
+    margin: 20mm;
+  }
+
+  .print-footer {
+    margin: 20mm;
+  }
+
+  .print-main {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .page-break {
+    display: block;
+    page-break-before: always;
+  }
+
+  .hide-on-print {
+    display: none;
+  }
+}
+
+.link-famille {
+  color: #007bff; /* Bleu Bootstrap par défaut pour les liens */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-famille:hover {
+  color: #0056b3; /* Couleur au survol */
 }

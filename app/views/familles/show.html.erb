@@ -1,0 +1,126 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  
+    <div class="print-header">
+      <div class="h2-like"><%= @famille.type.nom.upcase %></div>
+    </div>
+
+    <br>
+    <div class="print-main">
+      <div class="h1-like"><%= @famille.nom.upcase %></div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="print-footer">
+      <div class="h2-like">Origine:</div>
+        <div class="markdown-content mb-4">
+          <%= @famille.origine_human_readable %>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="page-break"></div>
+
+    <div class="flex justify-between items-center">
+      <div class="h2-like">Plantes associées :</div><br>
+        <div class="hide-on-print">
+          <%= link_to 'Créer une nouvelle plante pour cette famille', new_plante_path(famille_id: @famille.id), class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+        </div>
+    </div>
+  <br>
+  <% if @famille.plantes.any? %>
+    <div class="grid grid-cols-2 gap-4">
+      <% @famille.plantes.each do |plante| %>
+        <div class="plante mb-6">
+          <div class="h2-like"><%= link_to plante.nom.capitalize, plante_path(plante), class: "link-famille" %></div>
+          <br>
+          <% if plante.image_url.present? %>
+            <%= image_tag(plante.image_url, alt: plante.nom, class: "plante-image") %>
+          <% end %>
+          <br>
+          <div class="plante-details">
+            <h3><strong>Observation:</strong></h3>
+            <p><%= plante.observation.capitalize %></p>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Aucune plante associée. <%= link_to "Ajouter une nouvelle plante", new_plante_path(famille_id: @famille.id), class: "text-blue-600 hover:underline" %></p>
+  <% end %>
+
+<div class="page-break"></div>
+
+<p><div class="h2-like">Substrat :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.substrat)) %>
+  </div>
+</p>
+
+<p><div class="h2-like">Temperature :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.temperature)) %>
+  </div>
+</p>
+
+<p><div class="h2-like">Arrosage :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.arrosage)) %>
+  </div>
+</p>
+
+<% if @famille.rempotage.present? %>
+<p><div class="h2-like">Rempotage :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.rempotage)) %>
+  </div>
+</p>
+<% end %>
+
+<% if @famille.plantation.present? %>
+<p><div class="h2-like">Plantation :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.plantation)) %>
+  </div>
+</p>
+<% end %>
+
+<p><div class="h2-like">Taille :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.taille)) %>
+  </div>
+</p>
+
+<p><div class="h2-like">Bouturage :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.bouturage)) %>
+  </div>
+</p>
+
+<p><div class="h2-like">Maladie :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.maladie)) %>
+  </div>
+</p>
+
+  <div class="hide-on-print">
+  <div class="mt-8">
+    <%= link_to "Modifier cette famille", edit_famille_path(@famille), class: "rounded-lg py-3 px-5 bg-orange-600 text-white font-medium" %>
+    <%= link_to "Retour aux familles", familles_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white font-medium" %>
+
+    <% if @famille.plantes.empty? %>
+      <%= link_to 'Détruire cette famille', @famille, data: {turbo_method: :delete, turbo_confirm: "'Êtes-vous sûr ? Cette action est irréversible.'"}, class: "rounded-lg py-3 px-5 bg-red-600 text-white font-medium" %>
+    <% end %>
+
+    <%= link_to "Retour aux types", types_path, class: "rounded-lg py-3 px-5 bg-orange-600 text-white font-medium" %>
+  </div>
+  </div>
+</div>

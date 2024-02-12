@@ -11,9 +11,18 @@
     </div>
   <% end %>
 
+  <% if @plante.famille_id %>
+    <%= form.hidden_field :famille_id, value: @plante.famille_id %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :famille_id, "Famille" %>
+    <%= form.collection_select :famille_id, @familles, :id, :nom, prompt: "Sélectionnez une famille" %>
+  </div>
+
   <div class="my-5">
     <%= form.label :nom %>
-    <%= form.text_field :nom, placeholder: "Peut importe qu'il s'agisse du nom latin ou du nom commun.", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :nom, placeholder: "Nom latin ou nom commun.", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -22,58 +31,8 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :arrosage_printemps_ete, "Arrosage en été", class: "h1-like" %>
-    <%= form.text_area :arrosage_printemps_ete, placeholder: "Décrivez le régime d'arrosage en période chaude.", rows: 4, class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :arrosage_hiver, "Arrosage en hiver", class: "h1-like" %>
-    <%= form.text_area :arrosage_hiver, placeholder: "Décrivez le régime d'arrosage en période froide.", rows: 4, class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :origine %>
-    <%= form.select :origine, Plante.origines.map { |key, value| [value, key] }, include_blank: 'Sélectionnez une origine' %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :rempotage, class: "h1-like" %>
-    <%= form.text_area :rempotage, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :plantation, class: "h1-like" %>
-    <%= form.text_area :plantation, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :maladie, class: "h1-like" %>
-    <%= form.text_area :maladie, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :categorie %>
-    <%= form.select :categorie, Plante.categories.map { |key, value| [value, key] }, include_blank: 'Sélectionnez une catégorie' %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :temperature, "Température (°C)", class: "h1-like" %>
-    <%= form.text_field :temperature, placeholder: "Ex: Entre 5 et 30° ", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :substrat, class: "h1-like" %>
-    <%= form.text_area :substrat, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :taille, class: "h1-like" %>
-    <%= form.text_area :taille, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :bouturage, class: "h1-like" %>
-    <%= form.text_area :bouturage, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :observation %>
+    <%= form.text_area :observation, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

@@ -1,0 +1,31 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="mb-8">
+    <div class="h1-like">Familles de plantes</div>
+  </div>
+
+  <% @familles.each do |famille| %>
+    <div class="famille mb-8">
+      <div class="h1-like"><%= famille.nom.upcase %></div>
+        <div class="h3-like"><%= famille.type&.nom&.capitalize %></div>
+
+      <h3 class="font-bold text-2xl mt-4">Plantes associées :</h3>
+      <% if famille.plantes.exists? %>
+        <ul class="list-disc pl-8">
+          <% famille.plantes.each do |plante| %>
+            <li><%= link_to plante.nom.capitalize, plante_path(plante), class: "link-famille" %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Aucune plante associée. <%= link_to "Ajouter une nouvelle plante", new_plante_path(famille_id: famille.id), class: "text-blue-600 hover:underline" %></p>
+      <% end %>
+      <br>
+      <%= link_to "Voir cette famille", famille_path(famille.id), class: "rounded-lg py-2 px-4 bg-orange-600 text-white font-medium" %>
+      <%= link_to "Modifier cette famille", edit_famille_path(famille), class: "rounded-lg py-2 px-4 bg-orange-600 text-white font-medium" %>
+      <%= link_to "Retour aux types", types_path, class: "rounded-lg py-2 px-4 bg-orange-600 text-white font-medium" %>
+    </div>
+  <% end %>
+</div>

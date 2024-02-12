@@ -1,0 +1,75 @@
+<%= form_with(model: famille, class: "contents") do |form| %>
+  <% if famille.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(famille.errors.count, "error") %> prohibited this famille from being saved:</h2>
+
+      <ul>
+        <% famille.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <% if famille.type_id %>
+    <div class="h1-like">
+      <%= form.hidden_field :type_id %>
+      <%= Type.find(@famille.type_id).nom.capitalize %>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :nom, class: "h2-like" %>
+    <%= form.text_field :nom, placeholder: "Ex. Famille des crassulacées.", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :origine, class: "h2-like" %>
+    <%= form.select :origine, Famille.origines.keys.map { |origine| [origine.humanize, origine] }, { include_blank: true } %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :substrat, class: "h2-like" %>
+    <%= form.text_area :substrat, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :temperature, class: "h2-like" %>
+    <%= form.text_field :temperature, rows: 4, placeholder: "Ex: Entre 5 et 30°", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :arrosage, class: "h2-like" %>
+    <%= form.text_area :arrosage, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :rempotage, class: "h2-like" %>
+    <%= form.text_area :rempotage, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :plantation, class: "h2-like" %>
+    <%= form.text_area :plantation, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :taille, class: "h2-like" %>
+    <%= form.text_area :taille, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :bouturage, class: "h2-like" %>
+    <%= form.text_area :bouturage, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :maladie, class: "h2-like" %>
+    <%= form.text_area :maladie, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
