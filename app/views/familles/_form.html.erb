@@ -30,6 +30,11 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :origine_precise, class: "h2-like" %>
+    <%= form.text_area :origine_precise, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :substrat, class: "h2-like" %>
     <%= form.text_area :substrat, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
@@ -37,6 +42,11 @@
   <div class="my-5">
     <%= form.label :temperature, class: "h2-like" %>
     <%= form.text_field :temperature, rows: 4, placeholder: "Ex: Entre 5 et 30°", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :temperature_precise, class: "h2-like" %>
+    <%= form.text_area :temperature_precise, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

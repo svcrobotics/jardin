@@ -13,9 +13,9 @@
   </p>
   <% end %>
 
-  <p class="h1-like">
+  <p><div class="h2-like">Observation:</div>
     <div class="markdown-content mb-4">
-      <%= plante.observation.capitalize %>
+      <%= sanitize(markdown_to_html(@plante.observation)) %>
     </div>
   </p>
 

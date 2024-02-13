@@ -1,0 +1,14 @@
+<%= form_with url: chat_submit_path, method: :post, local: true, data: { turbo: false } do |form| %>
+  <%= form.label :message, "Posez votre question ici :" %>
+  <%= form.text_field :message %>
+  <%= form.submit "Envoyer" %>
+<% end %>
+
+<% if @response %>
+  <p>Réponse : <%= @response %></p>
+<% end %>
+
+<% if @error %>
+  <p>Erreur : <%= @error %></p>
+<% end %>
+

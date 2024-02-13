@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_10_171938) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_13_153549) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_10_171938) do
     t.string "temperature"
     t.string "nom", null: false
     t.integer "type_id"
+    t.text "origine_precise"
+    t.text "temperature_precise"
     t.index ["nom"], name: "index_familles_on_nom", unique: true
     t.index ["type_id"], name: "index_familles_on_type_id"
   end
@@ -74,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_10_171938) do
     t.datetime "updated_at", null: false
     t.text "observation"
     t.integer "famille_id"
+    t.text "conseil_expert"
     t.index ["famille_id"], name: "index_plantes_on_famille_id"
     t.index ["nom"], name: "index_plantes_on_nom", unique: true
   end

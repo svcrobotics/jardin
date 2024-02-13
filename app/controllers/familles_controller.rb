@@ -72,6 +72,6 @@ class FamillesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def famille_params
-      params.require(:famille).permit(:nom, :type_id, :origine, :temperature, :arrosage, :substrat, :rempotage, :taille, :bouturage, :maladie)
+      params.require(:famille).permit(:nom, :type_id, :origine, :plantation, :temperature, :arrosage, :substrat, :rempotage, :taille, :bouturage, :maladie, :origine_precise, :temperature_precise)
     end
 end

@@ -46,8 +46,8 @@
           <% end %>
           <br>
           <div class="plante-details">
-            <h3><strong>Observation:</strong></h3>
-            <p><%= plante.observation.capitalize %></p>
+            <h3><strong>Conseils d'expert:</strong></h3>
+            <p><%= sanitize(markdown_to_html(plante.conseil_expert)) %></p>
           </div>
 
         </div>
@@ -59,6 +59,12 @@
 
 <div class="page-break"></div>
 
+<p><div class="h2-like">Origine precise :</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.origine_precise)) %>
+  </div>
+</p>
+
 <p><div class="h2-like">Substrat :</div>
   <div class="markdown-content mb-4">
     <%= sanitize(markdown_to_html(@famille.substrat)) %>
@@ -68,6 +74,12 @@
 <p><div class="h2-like">Temperature :</div>
   <div class="markdown-content mb-4">
     <%= sanitize(markdown_to_html(@famille.temperature)) %>
+  </div>
+</p>
+
+<p><div class="h2-like">Temperature precise:</div>
+  <div class="markdown-content mb-4">
+    <%= sanitize(markdown_to_html(@famille.temperature_precise)) %>
   </div>
 </p>
 
