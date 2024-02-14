@@ -66,6 +66,11 @@ class PlantesController < ApplicationController
     end
   end
 
+  def rechercher
+    @query = params[:query]
+    @resultats = Plante.where("nom LIKE ?", "%#{@query}%") if @query.present?
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plante

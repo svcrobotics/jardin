@@ -155,3 +155,13 @@
 .link-famille:hover {
   color: #0056b3; /* Couleur au survol */
 }
+
+.link-plante {
+  color: #007bff; /* Bleu Bootstrap par défaut pour les liens */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-plante:hover {
+  color: #0056b3; /* Couleur au survol */
+}

@@ -1,0 +1,13 @@
+
+
+    <h3 class="font-bold text-2xl mt-4">Résultat de la recherche pour "<%= @query %>":</h3>
+
+      <% if @resultats.present? %>
+        <ul class="list-disc pl-8">
+          <% @resultats.each do |plante| %>
+            <li><%= link_to plante.nom.capitalize, plante_path(plante), class: "link-plante" %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Aucune plante trouvé.</p>
+      <% end %>

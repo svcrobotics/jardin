@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   resources :types
   resources :familles
   resources :plantes
@@ -6,7 +8,8 @@ Rails.application.routes.draw do
   get '/chat/ask', to: 'chat#ask'
   post 'chat/submit', to: 'chat#submit', as: 'chat_submit'
 
-
+  
+  get 'rechercher', to: 'plantes#rechercher', as: 'rechercher'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
