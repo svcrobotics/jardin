@@ -54,6 +54,9 @@ gem "redcarpet"
 gem 'httparty'
 gem 'ruby-openai'
 
+# Exporter les données existantes vers des fichiers seeds.
+gem 'seedbank'
+gem 'seed_dump'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
