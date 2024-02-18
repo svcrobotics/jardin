@@ -13,11 +13,11 @@ class ChatgptService
   attr_reader :api_url, :options, :model, :message
 
   def initialize(message, model = 'gpt-4-vision-preview') # gpt-3.5-turbo
-    api_key = Rails.application.credentials.chatgpt_api_key
+    @api_key = Rails.application.credentials.chatgpt_api_key
     @options = {
       headers: {
         'Content-Type' => 'application/json',
-        'Authorization' => "Bearer #{api_key}"
+        'Authorization' => "Bearer #{@api_key}"
       }
     }
     @api_url = 'https://api.openai.com/v1/chat/completions'
@@ -30,7 +30,16 @@ class ChatgptService
       model:,
       messages: [{ role: 'user', content: message }]
     }
-    response = HTTParty.post(api_url, body: body.to_json, headers: options[:headers], timeout: 10)
+
+    response = HTTParty.post(
+      @api_url, 
+      body: body.to_json,
+      headers: {
+      'Content-Type' => 'application/json', # Définit l'en-tête Content-Type comme application/json
+      'Authorization' => "Bearer #{@api_key}"
+      },
+      timeout: 10
+    )
     raise response['error']['message'] unless response.code == 200
 
     response['choices'][0]['message']['content']
