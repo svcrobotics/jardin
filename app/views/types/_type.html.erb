@@ -7,16 +7,29 @@
       </div>
     </p>
 
-    <h3>Familles associées :</h3>
-    <% if type.familles.any? %>
-      <ul>
-        <% type.familles.each do |famille| %>
-          <li><%= link_to famille.nom, famille_path(famille) %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>Aucune famille associée. <%= link_to "Créer une nouvelle famille", new_famille_path(type_id: type.id) %></p>
-    <% end %>
+    <h3 class="font-bold text-2xl mt-4">Familles associées :</h3><br>
+      <% if type.familles.any? %>
+        <ul class="list-disc pl-8">
+          <% type.familles.each do |famille| %>
+            <li><%= link_to famille.nom, famille_path(famille), class: "link-famille" %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Aucune famille associée. <%= link_to "Ajouter une nouvelle famille.", new_famille_path(type_id: type.id), class: "text-blue-600 hover:underline" %></p>
+      <% end %>
+      <br>
+      
+    <p><div class="h2-like">Description:</div>
+      <div class="markdown-content mb-4">
+        <%= sanitize(markdown_to_html(@type.description)) %>
+      </div>
+    </p>
+
+    <p><div class="h2-like">Caracteristique:</div>
+      <div class="markdown-content mb-4">
+        <%= sanitize(markdown_to_html(@type.caracteristique)) %>
+      </div>
+    </p>
+
+    
   </div>
-
-

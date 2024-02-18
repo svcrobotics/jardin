@@ -9,6 +9,7 @@ class Famille < ApplicationRecord
   enum origine: {
     europe: 'Europe',
     amerique_du_sud: 'Amérique du Sud',
+    amerique_centrale: 'Amerique Centrale',
     amerique_du_nord: 'Amérique du Nord',
     asie: 'Asie',
     afrique_du_sud: 'Afrique du Sud',

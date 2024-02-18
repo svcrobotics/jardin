@@ -21,8 +21,43 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :nom %>
-    <%= form.text_field :nom, placeholder: "Nom latin ou nom commun.", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :nom, "Nom commun" %>
+    <%= form.text_field :nom, placeholder: "Ex: Pied d'éléphant.", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :nom_scientifique, "Nom scientifique" %>
+    <%= form.text_field :nom_scientifique, placeholder: "Ex: Beaucarnea recurvata.", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :condition_ete , "Condition de vie en été" %>
+    <%= form.select :condition_ete, Plante.condition_ete.map {|key, value| [value, key]} , { include_blank: true } %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :arrosage_ete %>
+    <%= form.text_area :arrosage_ete, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :condition_hiver, "Condition de vie en hiver" %>
+    <%= form.select :condition_hiver, Plante.condition_hiver.map { |key, value| [value, key] }, { include_blank: true } %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :arrosage_hiver %>
+    <%= form.text_area :arrosage_hiver, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -31,13 +66,28 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :observation %>
-    <%= form.text_area :observation, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :sante, "Comment savoir si elle va bien ?" %>
+    <%= form.text_area :sante, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :conseil_expert, "Conseils de l'Expert" %>
-    <%= form.text_area :conseil_expert, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :probleme, "Quels sont les signes de problème ?" %>
+    <%= form.text_area :probleme, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :conseil, "Quels conseils pouvez-vous me donnés ?" %>
+    <%= form.text_area :conseil, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :besoin, "Quelles sont ces besoins nutritionnels ?" %>
+    <%= form.text_area :besoin, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :conseil_expert, "Les conseils de papi" %>
+    <%= form.text_area :conseil_expert, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...", class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

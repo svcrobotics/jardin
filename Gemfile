@@ -53,6 +53,7 @@ gem "redcarpet"
 # Pour ChatGPT
 gem 'httparty'
 gem 'ruby-openai'
+gem 'openai'
 
 # Exporter les données existantes vers des fichiers seeds.
 gem 'seedbank'

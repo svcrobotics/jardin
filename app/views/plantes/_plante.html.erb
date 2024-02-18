@@ -2,6 +2,7 @@
   <p class="h1-like">
     <div class="markdown-content mb-4">
       <h1><%= plante.nom.capitalize %></h1>
+      <h1><%= plante.nom_scientifique %></h1>
     </div>
   </p>
 
@@ -13,11 +14,70 @@
   </p>
   <% end %>
 
-  <p><div class="h2-like">Observation:</div>
+  <div class="h2-like">Origine:</div>
+  <div id="map" style="height: 400px;"></div>
+
+  <script>
+      var map = L.map('map').setView([<%= @plante.latitude %>, <%= @plante.longitude %>], 3); // Zoom et position
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+      }).addTo(map);
+
+      var marker = L.marker([<%= @plante.latitude %>, <%= @plante.longitude %>]).addTo(map)
+      .bindPopup('<%= @plante.nom_scientifique %>')
+      .openPopup();
+  </script>
+
+  <div class="h2-like">Condition de vie en été:</div>
     <div class="markdown-content mb-4">
-      <%= sanitize(markdown_to_html(@plante.observation)) %>
+      <%= sanitize(markdown_to_html(@plante.condition_ete_human_readable)) %>
     </div>
-  </p>
+
+  <div class="h2-like">Arrosage en été</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.arrosage_ete)) %>
+    </div>
+  
+
+  <div class="h2-like">Condition de vie en hiver:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.condition_hiver_human_readable)) %>
+    </div>
+  
+
+  <div class="h2-like">Arrosage en hiver:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.arrosage_hiver)) %>
+    </div>
+  
+
+  <div class="h2-like">Etat de santé:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.sante)) %>
+    </div>
+  
+
+  <div class="h2-like">Signes de problèmes:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.probleme)) %>
+    </div>
+  
+
+  <div class="h2-like">Conseils:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.conseil)) %>
+    </div>
+  
+
+  <div class="h2-like">Besoins nutritionnels:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.besoin)) %>
+    </div>
+  
+  <div class="h2-like">Conseils de papi:</div>
+    <div class="markdown-content mb-4">
+      <%= sanitize(markdown_to_html(@plante.conseil_expert)) %>
+    </div>
 
   <% if action_name != "show" %>
     <%= link_to "Show this plante", plante, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

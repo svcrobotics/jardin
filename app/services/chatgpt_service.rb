@@ -12,7 +12,7 @@ class ChatgptService
 
   attr_reader :api_url, :options, :model, :message
 
-  def initialize(message, model = 'gpt-3.5-turbo')
+  def initialize(message, model = 'gpt-4-vision-preview') # gpt-3.5-turbo
     api_key = Rails.application.credentials.chatgpt_api_key
     @options = {
       headers: {
@@ -37,7 +37,7 @@ class ChatgptService
   end
 
   class << self
-    def call(message, model = 'gpt-3.5-turbo')
+    def call(message, model = 'gpt-4-vision-preview')
       new(message, model).call
     end
   end

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'home/index'
+
+  root 'home#index'
+  get 'home/chat_with_image', to: 'home#chat_with_image', as: 'chat_with_image_home'
 
   resources :types
   resources :familles
   resources :plantes
 
-  get '/chat/ask', to: 'chat#ask'
+  get '/chat/ask', to: 'chat#ask', as: 'chat_ask'
   post 'chat/submit', to: 'chat#submit', as: 'chat_submit'
 
   

@@ -11,9 +11,20 @@
     </div>
   <% end %>
 
+
   <div class="my-5">
-    <%= form.label :nom %>
-    <%= form.text_field :nom, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :nom, class: "h2-like" %>
+    <%= form.text_field :nom, placeholder: "Ex. Plante grasse, Arbres etc...", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description, class: "h2-like" %>
+    <%= form.text_area :description, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :caracteristique, class: "h2-like" %>
+    <%= form.text_area :caracteristique, rows: 4, placeholder: "Vous pouvez utiliser la syntaxe Markdown ici...",class: "markdown-content block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

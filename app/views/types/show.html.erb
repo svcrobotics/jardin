@@ -6,10 +6,12 @@
 
     <%= render @type %>
 
-    <%= link_to "Edit this type", edit_type_path(@type), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Editer ce type", edit_type_path(@type), class: "ml-2 rounded-lg py-3 px-5 bg-orange-600 inline-block font-medium" %>
+    
+    <%= link_to "Retour aux types", types_path, class: "ml-2 rounded-lg py-3 px-5 bg-orange-600 inline-block font-medium" %>
+
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this type", type_path(@type), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Detruire ce type", type_path(@type), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-red-600 inline-block font-medium" %>
     </div>
-    <%= link_to "Back to types", types_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

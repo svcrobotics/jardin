@@ -11,7 +11,7 @@
   <% @types.each do |type| %>
     <div class="flex justify-between items-center mb-4">
       <div class="h1-like"><%= type.nom.capitalize %></div>
-      <%= link_to "Éditer", edit_type_path(type), class: "rounded-lg py-2 px-4 bg-orange-500 text-white font-medium" %>
+      <%= link_to "Voir", type_path(type), class: "rounded-lg py-2 px-4 bg-blue-600 text-white font-medium" %>
     </div>
 
     <div class="flex justify-between items-center">
@@ -30,4 +30,5 @@
     <% end %>
     <hr class="mt-4">
   <% end %>
+  <br><br>
 </div>

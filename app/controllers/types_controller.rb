@@ -50,11 +50,12 @@ class TypesController < ApplicationController
 
   # DELETE /types/1 or /types/1.json
   def destroy
-    @type.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to types_url, notice: "Type was successfully destroyed." }
-      format.json { head :no_content }
+    @type = Type.find(params[:id])
+    if @type.familles.empty?
+      @type.destroy
+      redirect_to types_path, notice: 'Type détruit avec succès.'
+    else
+      redirect_to @type, alert: 'Ce type ne peut pas être détruit car il a des familles rattachées.'
     end
   end
 
@@ -66,6 +67,6 @@ class TypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def type_params
-      params.require(:type).permit(:nom)
+      params.require(:type).permit(:nom, :description, :caracteristique)
     end
 end

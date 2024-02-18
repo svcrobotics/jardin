@@ -7,25 +7,29 @@
     <div class="h1-like">Bienvenue dans le monde des plantes</div>
   </div>
 
+  
   <%= form_with(url: rechercher_path, method: "get", local: true) do |form| %>
-    <div class="h2-like"><%= form.label :query, "Rechercher une plante:" %></div>
-    <%= form.text_field :query %>
-    <%= form.submit "Voir", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+    <div class="flex justify-between items-center mb-8">
+      <div class="h2-like"><%= form.label :query, "Rechercher une plante:" %></div>
+      <%= form.text_field :query %>
+      <%= form.submit "Voir", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+    </div>
   <% end %>
+  
 
   <br>
   <div class="flex justify-between items-center mb-8">
     <div class="h2-like">Types de plantes</div>
-    <%= link_to "Voir les différents types de plantes", types_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+    <%= link_to "Voir", types_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
   </div>
 
   <div class="flex justify-between items-center mb-8">
     <div class="h2-like">Familles de plantes</div>
-    <%= link_to "Voir les différentes familles de plantes", familles_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+    <%= link_to "Voir", familles_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
   </div>
 
   <div class="flex justify-between items-center mb-8">
     <div class="h2-like">Plantes</div>
-    <%= link_to "Voir les différentes plantes", plantes_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
+    <%= link_to "Voir", plantes_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium" %>
   </div>
 
