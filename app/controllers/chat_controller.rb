@@ -7,12 +7,9 @@ class ChatController < ApplicationController
   # Traite la question soumise via le formulaire et affiche la réponse.
   def submit
     message = params[:message] # Votre question textuelle
-    image = params[:image] # L'image téléchargée
+    image_url = params[:image_url] # L'image 
 
-    # Traiter l'image comme nécessaire, par exemple, en l'envoyant à un service externe pour analyse
-
-    # Supposons que `ChatgptService.call` peut prendre une URL d'image comme argument optionnel
-    @response = ChatgptService.call(params[:message], 'gpt-4-vision-preview')
+    @response = ChatgptService.call(message, 'gpt-4-vision-preview', image_url)
 
     if @response
       render :ask

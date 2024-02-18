@@ -3,7 +3,10 @@
     <%= form.label :message, "Posez votre question ici :" %>
     <%= form.text_field :message %>
   </div>
-
+  <div>
+    <%= form.label :image_url, "URL de l'image :" %>
+    <%= form.text_field :image_url %>
+  </div>
 
   <%= form.submit "Envoyer" %>
 <% end %>

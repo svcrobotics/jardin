@@ -1,19 +1,11 @@
-# @note: This service is used to call the OpenAI API to generate a response to a message
-# @note: The API key is stored in the credentials file
-# @param message [String] The message to generate a response for
-# @param model [String] The model to use for the response [gpt-3.5-turbo, gpt-3.5-turbo-0301]
-# @return [String] The generated response
-# @example
-#   ChatgptService.call('What is your name?', 'gpt-3.5-turbo')
-#   => "\n\nI am an AI language model created by OpenAI, so I don't have a name. You can call me OpenAI or AI assistant."
-# API Docs: https://platform.openai.com/docs/api-reference/chat/create
 class ChatgptService
   include HTTParty
 
-  attr_reader :api_url, :options, :model, :message
-
-  def initialize(message, model = 'gpt-4-vision-preview') # gpt-3.5-turbo
+  def initialize(message, model = 'gpt-4-vision-preview', image_url = nil)
     @api_key = Rails.application.credentials.chatgpt_api_key
+    @model = model
+    @message = message
+    @image_url = image_url # Ajouter cette ligne
     @options = {
       headers: {
         'Content-Type' => 'application/json',
@@ -21,34 +13,47 @@ class ChatgptService
       }
     }
     @api_url = 'https://api.openai.com/v1/chat/completions'
-    @model = model
-    @message = message
   end
 
   def call
-    body = {
-      model:,
-      messages: [{ role: 'user', content: message }]
+  body = {
+    model: @model,
+    messages: [
+      { role: 'user', content: @message } # Message texte
+      # Assurez-vous d'ajouter le message de l'image correctement ici
+    ],
+    max_tokens: 100
+  }
+
+  # Ajouter l'image comme un message distinct si l'URL de l'image est fournie
+  if @image_url
+    body[:messages] << {
+      role: 'user', 
+      content: [
+        {
+          "type": "image",
+          "image_url": @image_url
+        }
+      ]
     }
-
-    response = HTTParty.post(
-      @api_url, 
-      body: body.to_json,
-      headers: {
-      'Content-Type' => 'application/json', # Définit l'en-tête Content-Type comme application/json
-      'Authorization' => "Bearer #{@api_key}"
-      },
-      timeout: 10
-    )
-    raise response['error']['message'] unless response.code == 200
-
-    response['choices'][0]['message']['content']
   end
 
-  class << self
-    def call(message, model = 'gpt-4-vision-preview')
-      new(message, model).call
-    end
-  end
+  response = self.class.post(
+    @api_url, 
+    body: body.to_json,
+    headers: @options[:headers],
+    timeout: 10
+  )
+
+  raise response.parsed_response['error']['message'] unless response.code == 200
+
+  response.parsed_response['choices'][0]['message']['content']
 end
 
+
+
+  # Ajuster également la méthode de classe `call` pour accepter le nouvel argument
+  def self.call(message, model = 'gpt-4-vision-preview', image_url = nil)
+    new(message, model, image_url).call
+  end
+end
