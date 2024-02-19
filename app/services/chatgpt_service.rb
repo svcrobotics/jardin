@@ -20,9 +20,8 @@ class ChatgptService
     model: @model,
     messages: [
       { role: 'user', content: @message } # Message texte
-      # Assurez-vous d'ajouter le message de l'image correctement ici
     ],
-    max_tokens: 100
+    max_tokens: 50
   }
 
   # Ajouter l'image comme un message distinct si l'URL de l'image est fournie
